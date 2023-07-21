@@ -2,11 +2,13 @@ import { factory, primaryKey } from "@mswjs/data";
 import { v4 as uuidv4 } from "uuid";
 
 const models = {
-  user: {
+  todo: {
     id: primaryKey(uuidv4),
-    name: String,
-    email: String,
+    title: String,
+    done: Boolean,
+    description: String,
     createdAt: Date.now,
+    updatedAt: Date.now,
   },
 };
 

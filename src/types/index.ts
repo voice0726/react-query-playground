@@ -3,9 +3,11 @@ export type Entity = {
   createdAt: number;
 };
 
-export type User = {
+export type Todo = {
   id: string;
-  name: string;
-  email: string;
+  title: string;
+  done: boolean;
+  description: string;
   createdAt: Date;
+  updatedAt: Date;
 };

@@ -1,11 +1,11 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 
-import { userQueryKey } from "@/features/users/api/query-key";
+import { userQueryKey } from "@/features/todos/api/query-key";
 import { apiClient } from "@/lib/api-client";
-import { User } from "@/types";
+import { Todo } from "@/types";
 
 const getUser = async (id: string) => {
-  return await apiClient.get<User>(`/api/users/${id}`).then((res) => res.data);
+  return await apiClient.get<Todo>(`/api/todos/${id}`).then((res) => res.data);
 };
 
 const getUserQuery = (id: string) => {
@@ -18,11 +18,11 @@ const getUserQuery = (id: string) => {
 export const useGetUser = (
   id: string,
   option?: Omit<
-    UseQueryOptions<User, unknown, User, ReturnType<typeof userQueryKey.one>>,
+    UseQueryOptions<Todo, unknown, Todo, ReturnType<typeof userQueryKey.one>>,
     "queryKey"
   >,
 ) => {
-  return useQuery<User, unknown, User, ReturnType<typeof userQueryKey.one>>({
+  return useQuery<Todo, unknown, Todo, ReturnType<typeof userQueryKey.one>>({
     ...getUserQuery(id),
     ...option,
   });

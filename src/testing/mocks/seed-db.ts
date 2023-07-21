@@ -6,11 +6,15 @@ import { db } from "./db";
 
 
 export const seedDb = (): void => {
-  const userCount = db.user.count();
+  const userCount = db.todo.count();
 
   if (userCount > 0) {
     return;
   }
 
-  testData.users.forEach((user) => db.user.create({ ...user, createdAt: dayjs(user.createdAt).unix() }));
+  testData.todos.forEach((todo => db.todo.create({
+    ...todo,
+    createdAt: dayjs(todo.createdAt).unix(),
+    updatedAt: dayjs(todo.updatedAt).unix()
+  })));
 };

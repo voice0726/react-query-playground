@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 
-import { useGetUser } from "@/features/users/api/get-user";
+import { useGetUser } from "@/features/todos/api/get-user";
 
 type Props = {
   id: string;
@@ -19,8 +19,8 @@ const UserDetail = ({ id }: Props) => {
     <div>
       <h1>User details</h1>
       <div>ID: {user.id}</div>
-      <div>Name: {user.name}</div>
-      <div>Email: {user.email}</div>
+      <div>Title: {user.title}</div>
+      <div>Description: {user.description}</div>
       <pre>{JSON.stringify(user, undefined, " ")}</pre>
     </div>
   );
