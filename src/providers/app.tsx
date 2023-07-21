@@ -1,6 +1,7 @@
+import { ReactNode } from "react";
+
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 import { IS_DEVELOPMENT } from "@/config/constants";

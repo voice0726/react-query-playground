@@ -1,5 +1,6 @@
-import { MSWDevTools } from "msw-devtools";
 import { ReactNode } from "react";
+
+import { MSWDevTools } from "msw-devtools";
 
 import { IS_DEVELOPMENT } from "@/config/constants";
 import { db, handlers } from "@/testing/mocks";

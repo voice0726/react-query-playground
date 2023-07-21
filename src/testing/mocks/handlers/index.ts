@@ -1,7 +1,6 @@
 import { rest } from "msw";
 
 import { API_URL } from "@/config/constants";
-
 import { userHandlers } from "@/testing/mocks/handlers/users";
 
 export const handlers = [

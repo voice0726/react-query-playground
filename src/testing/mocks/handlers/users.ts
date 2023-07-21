@@ -1,4 +1,5 @@
 import { rest } from "msw";
+
 import { API_URL } from "@/config/constants";
 import { db } from "@/testing/mocks";
 
@@ -21,7 +22,7 @@ const getUserHandler = rest.get(`${API_URL}/api/users/:id`, (req, res, ctx) => {
     return res(ctx.status(404), ctx.json({ message: "user not found" }));
   }
 
-  return res(ctx.status(200), ctx.json({ user }));
+  return res(ctx.status(200), ctx.json(user));
 });
 
 export const userHandlers = [getUsersHandler, getUserHandler];

@@ -1,11 +1,16 @@
+import dayjs from "dayjs";
+
 import { testData } from "../test-data";
 
 import { db } from "./db";
 
-export const seedDb = () => {
+
+export const seedDb = (): void => {
   const userCount = db.user.count();
 
-  if (userCount > 0) return;
+  if (userCount > 0) {
+    return;
+  }
 
-  testData.users.forEach((user) => db.user.create(user));
+  testData.users.forEach((user) => db.user.create({ ...user, createdAt: dayjs(user.createdAt).unix() }));
 };

@@ -5,6 +5,7 @@ export const queryClient = new QueryClient({
     queries: {
       retry: false,
       refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 5, // 5 minutes
       useErrorBoundary: false, // if change true, then errors will be thrown and shown in dev screen
     },
   },

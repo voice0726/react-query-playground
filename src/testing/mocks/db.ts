@@ -6,7 +6,6 @@ const models = {
     id: primaryKey(uuidv4),
     name: String,
     email: String,
-    password: String,
     createdAt: Date.now,
   },
 };
