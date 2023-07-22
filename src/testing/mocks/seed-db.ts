@@ -17,4 +17,10 @@ export const seedDb = (): void => {
     createdAt: dayjs(todo.createdAt).unix(),
     updatedAt: dayjs(todo.updatedAt).unix()
   })));
+
+  testData.people.forEach((person => db.person.create({
+    ...person,
+    createdAt: dayjs(person.createdAt).unix(),
+    updatedAt: dayjs(person.updatedAt).unix()
+  })));
 };

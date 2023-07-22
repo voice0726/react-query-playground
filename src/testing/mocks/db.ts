@@ -10,6 +10,15 @@ const models = {
     createdAt: Date.now,
     updatedAt: Date.now,
   },
+  person: {
+    id: primaryKey(uuidv4),
+    name: String,
+    age: Number,
+    tel: String,
+    email: String,
+    createdAt: Date.now,
+    updatedAt: Date.now,
+  }
 };
 
 export const db = factory(models);

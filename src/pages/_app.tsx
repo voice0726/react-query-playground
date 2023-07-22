@@ -8,6 +8,8 @@ import { API_MOCKING } from "@/config/constants";
 import { MSWWrapperProps } from "@/lib/msw";
 import { AppProvider } from "@/providers/app";
 
+import "@/styles/globals.css";
+
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
