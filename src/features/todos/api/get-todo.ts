@@ -4,18 +4,18 @@ import { userQueryKey } from "@/features/todos/api/query-key";
 import { apiClient } from "@/lib/api-client";
 import { Todo } from "@/types";
 
-const getUser = async (id: string) => {
+const getTodo = async (id: string) => {
   return await apiClient.get<Todo>(`/api/todos/${id}`).then((res) => res.data);
 };
 
-const getUserQuery = (id: string) => {
+const getTodoQuery = (id: string) => {
   return {
     queryKey: userQueryKey.one(id),
-    queryFn: () => getUser(id),
+    queryFn: () => getTodo(id),
   };
 };
 
-export const useGetUser = (
+export const useGetTodo = (
   id: string,
   option?: Omit<
     UseQueryOptions<Todo, unknown, Todo, ReturnType<typeof userQueryKey.one>>,
@@ -23,7 +23,7 @@ export const useGetUser = (
   >,
 ) => {
   return useQuery<Todo, unknown, Todo, ReturnType<typeof userQueryKey.one>>({
-    ...getUserQuery(id),
+    ...getTodoQuery(id),
     ...option,
   });
 };

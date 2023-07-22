@@ -1,13 +1,13 @@
 import { GetServerSideProps } from "next";
 
-import { useGetUser } from "@/features/todos/api/get-user";
+import { useGetTodo } from "@/features/todos/api/get-todo";
 
 type Props = {
   id: string;
 };
 
 const UserDetail = ({ id }: Props) => {
-  const { data: user, isLoading } = useGetUser(id);
+  const { data: user, isLoading } = useGetTodo(id);
   if (isLoading) {
     return <div>Loading...</div>;
   }
