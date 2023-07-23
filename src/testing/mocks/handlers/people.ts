@@ -29,7 +29,13 @@ const listPeopleHandler = rest.get(`${API_URL}/people`, (req, res, ctx) => {
 
   return res(
     ctx.status(200),
-    ctx.json(people),
+    ctx.json({
+      records: people,
+      total: db.person.count(),
+      page_size: 10,
+      page_number: page ? parseInt(page) : 1,
+      has_more: page ? parseInt(page) * 10 < db.person.count() : true,
+    }),
   );
 });
 

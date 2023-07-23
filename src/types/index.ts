@@ -21,3 +21,11 @@ export type Person = {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export type Pageable<T> = {
+  records: T[];
+  total: number;
+  pageSize: number;
+  pageNumber: number;
+  hasMore: boolean;
+}
