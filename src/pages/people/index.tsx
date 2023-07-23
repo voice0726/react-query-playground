@@ -2,8 +2,10 @@ import { useState } from "react";
 
 import { usePeople } from "@/features/people/api/list-people";
 
+import Pagination from "@/components/Pagination";
+
 const People = () => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
   const {
     isLoading,
@@ -11,7 +13,7 @@ const People = () => {
     data,
     isFetching,
     isPreviousData,
-  } = usePeople();
+  } = usePeople(page);
 
   return (
     <div>
@@ -26,10 +28,10 @@ const People = () => {
           ))}
         </div>
       )}
-      <span>Current Page: {page + 1}</span>
+      <span>Current Page: {page}</span>
       <button
         onClick={() => setPage(old => Math.max(old - 1, 0))}
-        disabled={page === 0}
+        disabled={page === 1}
       >
         Previous Page
       </button>
@@ -46,6 +48,8 @@ const People = () => {
         Next Page
       </button>
       {isFetching ? <span> Loading...</span> : null}{' '}
+
+      {data && <Pagination current={page} setPage={setPage} total={data.total} perPage={data.pageSize} />}
     </div>
   )
 }
