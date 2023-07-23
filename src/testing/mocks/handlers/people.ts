@@ -3,7 +3,7 @@ import { rest } from "msw";
 import { API_URL } from "@/config/constants";
 import { db } from "@/testing/mocks";
 
-const getPersonHandler = rest.get(`${API_URL}/people/:id`, (req, res, ctx) => {
+const getPersonHandler = rest.get(`${API_URL}/api/people/:id`, (req, res, ctx) => {
   const { id } = req.params;
   if (typeof id !== "string") {
     return res(ctx.status(400));
@@ -20,7 +20,7 @@ const getPersonHandler = rest.get(`${API_URL}/people/:id`, (req, res, ctx) => {
   );
 });
 
-const listPeopleHandler = rest.get(`${API_URL}/people`, (req, res, ctx) => {
+const listPeopleHandler = rest.get(`${API_URL}/api/people`, (req, res, ctx) => {
   const page = req.url.searchParams.get('page')
   const people = db.person.findMany({
     skip: page ? (parseInt(page) - 1) * 10 : undefined,
