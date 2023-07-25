@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-import { userQueryKey } from '@/features/todos/api/query-key';
+import { todoQueryKey } from '@/features/todos/api/query-key';
 import { Todo } from '@/features/todos/types';
 import { apiClient } from '@/lib/api-client';
 
@@ -10,18 +10,18 @@ const listUsers = async () => {
 
 const listUsersQuery = () => {
   return {
-    queryKey: userQueryKey.all,
+    queryKey: todoQueryKey.all,
     queryFn: listUsers,
   };
 };
 
 export const useListUsers = (
   options?: Omit<
-    UseQueryOptions<Todo[], unknown, Todo[], typeof userQueryKey.all>,
+    UseQueryOptions<Todo[], unknown, Todo[], typeof todoQueryKey.all>,
     'queryKey'
   >,
 ) => {
-  return useQuery<Todo[], unknown, Todo[], typeof userQueryKey.all>({
+  return useQuery<Todo[], unknown, Todo[], typeof todoQueryKey.all>({
     ...listUsersQuery(),
     ...options,
   });

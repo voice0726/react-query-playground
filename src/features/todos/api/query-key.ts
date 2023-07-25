@@ -1,4 +1,4 @@
-export const userQueryKey = {
-  all: ['users'] as const,
-  one: (id: string) => [...userQueryKey.all, id] as const,
+export const todoQueryKey = {
+  all: ['todos'] as const,
+  one: (id: string) => [...todoQueryKey.all, id] as const,
 };

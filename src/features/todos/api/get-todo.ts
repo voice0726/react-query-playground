@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-import { userQueryKey } from '@/features/todos/api/query-key';
+import { todoQueryKey } from '@/features/todos/api/query-key';
 import { Todo } from '@/features/todos/types';
 import { apiClient } from '@/lib/api-client';
 
@@ -10,7 +10,7 @@ const getTodo = async (id: string) => {
 
 const getTodoQuery = (id: string) => {
   return {
-    queryKey: userQueryKey.one(id),
+    queryKey: todoQueryKey.one(id),
     queryFn: () => getTodo(id),
   };
 };
@@ -18,11 +18,11 @@ const getTodoQuery = (id: string) => {
 export const useGetTodo = (
   id: string,
   option?: Omit<
-    UseQueryOptions<Todo, unknown, Todo, ReturnType<typeof userQueryKey.one>>,
+    UseQueryOptions<Todo, unknown, Todo, ReturnType<typeof todoQueryKey.one>>,
     'queryKey'
   >,
 ) => {
-  return useQuery<Todo, unknown, Todo, ReturnType<typeof userQueryKey.one>>({
+  return useQuery<Todo, unknown, Todo, ReturnType<typeof todoQueryKey.one>>({
     ...getTodoQuery(id),
     ...option,
   });
