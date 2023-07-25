@@ -1,15 +1,15 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-import { MSWDevTools } from "msw-devtools";
+import { MSWDevTools } from 'msw-devtools';
 
-import { IS_DEVELOPMENT } from "@/config/constants";
-import { db, handlers } from "@/testing/mocks";
+import { IS_DEVELOPMENT } from '@/config/constants';
+import { db, handlers } from '@/testing/mocks';
 
 export type MSWWrapperProps = {
   children: ReactNode;
 };
 
-import "@/testing/mocks/initialize";
+import '@/testing/mocks/initialize';
 
 export const MSWWrapper = ({ children }: MSWWrapperProps) => {
   return (

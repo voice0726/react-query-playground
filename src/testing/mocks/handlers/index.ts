@@ -1,8 +1,8 @@
-import { rest } from "msw";
+import { rest } from 'msw';
 
-import { API_URL } from "@/config/constants";
-import { peopleHandlers } from "@/testing/mocks/handlers/people";
-import { todoHandlers } from "@/testing/mocks/handlers/todos";
+import { API_URL } from '@/config/constants';
+import { peopleHandlers } from '@/testing/mocks/handlers/people';
+import { todoHandlers } from '@/testing/mocks/handlers/todos';
 
 export const handlers = [
   ...todoHandlers,

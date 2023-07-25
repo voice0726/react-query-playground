@@ -1,14 +1,14 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from 'react';
 
-import { NextPage } from "next";
-import type { AppProps } from "next/app";
-import dynamic from "next/dynamic";
+import { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 
-import { API_MOCKING } from "@/config/constants";
-import { MSWWrapperProps } from "@/lib/msw";
-import { AppProvider } from "@/providers/app";
+import { API_MOCKING } from '@/config/constants';
+import { MSWWrapperProps } from '@/lib/msw';
+import { AppProvider } from '@/providers/app';
 
-import "@/styles/globals.css";
+import '@/styles/globals.css';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -19,7 +19,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 const MSWWrapper = dynamic<MSWWrapperProps>(() =>
-  import("@/lib/msw").then(({ MSWWrapper }) => MSWWrapper),
+  import('@/lib/msw').then(({ MSWWrapper }) => MSWWrapper),
 );
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {

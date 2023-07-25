@@ -9,5 +9,5 @@ export type Todo = {
 
 export type CreateOrUpdateRequest = Omit<
   Todo,
-  "id" | "createdAt" | "updatedAt"
+  'id' | 'createdAt' | 'updatedAt'
 >;

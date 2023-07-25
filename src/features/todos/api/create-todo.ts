@@ -1,9 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query';
 
-import { API_URL } from "@/config/constants";
-import { CreateOrUpdateRequest, Todo } from "@/features/todos/types";
-import { apiClient } from "@/lib/api-client";
-import { queryClient } from "@/lib/react-query";
+import { API_URL } from '@/config/constants';
+import { CreateOrUpdateRequest, Todo } from '@/features/todos/types';
+import { apiClient } from '@/lib/api-client';
+import { queryClient } from '@/lib/react-query';
 
 const createTodo = async (body: CreateOrUpdateRequest) => {
   return apiClient
@@ -13,6 +13,6 @@ const createTodo = async (body: CreateOrUpdateRequest) => {
 
 export const useCreateTodo = () => {
   return useMutation((body: CreateOrUpdateRequest) => createTodo(body), {
-    onSuccess: () => queryClient.invalidateQueries(["todos"]),
+    onSuccess: () => queryClient.invalidateQueries(['todos']),
   });
 };

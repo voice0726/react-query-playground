@@ -1,7 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { useListUsers } from "@/features/todos/api/list-todos";
-
+import { useListUsers } from '@/features/todos/api/list-todos';
 
 const UserList = () => {
   const { data: todos, isLoading, isError } = useListUsers();
@@ -16,7 +15,10 @@ const UserList = () => {
       <h1>User List</h1>
       {todos.map((todo) => (
         <div key={todo.id}>
-          <div>{todo.title} {todo.done} {todo.description} <Link href={`/todos/${todo.id}`}>Details</Link></div>
+          <div>
+            {todo.title} {todo.done} {todo.description}{' '}
+            <Link href={`/todos/${todo.id}`}>Details</Link>
+          </div>
         </div>
       ))}
     </div>

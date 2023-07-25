@@ -1,9 +1,9 @@
-import { GetServerSideProps } from "next";
-import { useForm } from "react-hook-form";
+import { GetServerSideProps } from 'next';
+import { useForm } from 'react-hook-form';
 
-import { useGetTodo } from "@/features/todos/api/get-todo";
-import { useUpdateTodo } from "@/features/todos/api/update-todo";
-import { CreateOrUpdateRequest } from "@/features/todos/types";
+import { useGetTodo } from '@/features/todos/api/get-todo';
+import { useUpdateTodo } from '@/features/todos/api/update-todo';
+import { CreateOrUpdateRequest } from '@/features/todos/types';
 
 type Props = {
   id: string;
@@ -13,7 +13,7 @@ const UserDetail = ({ id }: Props) => {
   const { data: todo, isLoading } = useGetTodo(id);
   const { register, handleSubmit } = useForm<CreateOrUpdateRequest>({
     defaultValues: {
-      title: todo?.title || "",
+      title: todo?.title || '',
       done: todo?.done || false,
       description: todo?.description,
     },
@@ -45,29 +45,29 @@ const UserDetail = ({ id }: Props) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-6">
             <label
-              htmlFor={"title"}
+              htmlFor={'title'}
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Title
             </label>
             <input
-              {...register("title", { required: "title should not be empty" })}
+              {...register('title', { required: 'title should not be empty' })}
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             />
           </div>
           <div className="mb-6">
-            <label htmlFor={"done"}>Done</label>
-            <input type="checkbox" {...register("done")} />
+            <label htmlFor={'done'}>Done</label>
+            <input type="checkbox" {...register('done')} />
           </div>
           <div className="mb-6">
             <label
-              htmlFor={"description"}
+              htmlFor={'description'}
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Description
             </label>
             <input
-              {...register("description")}
+              {...register('description')}
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             />
           </div>
@@ -75,7 +75,7 @@ const UserDetail = ({ id }: Props) => {
             <button type="submit">Submit</button>
           </div>
         </form>
-        <pre>{JSON.stringify(todo, undefined, " ")}</pre>
+        <pre>{JSON.stringify(todo, undefined, ' ')}</pre>
       </div>
     </div>
   );

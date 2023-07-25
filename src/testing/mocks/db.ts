@@ -1,5 +1,5 @@
-import { factory, primaryKey } from "@mswjs/data";
-import { v4 as uuidv4 } from "uuid";
+import { factory, primaryKey } from '@mswjs/data';
+import { v4 as uuidv4 } from 'uuid';
 
 const models = {
   todo: {
@@ -18,7 +18,7 @@ const models = {
     email: String,
     createdAt: Date.now,
     updatedAt: Date.now,
-  }
+  },
 };
 
 export const db = factory(models);
