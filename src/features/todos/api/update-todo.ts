@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 
+import { Todo } from "@/features/todos/types";
 import { apiClient } from "@/lib/api-client";
 import { queryClient } from "@/lib/react-query";
-import { Todo } from "@/types";
 
 type UpdateTodoBody = {
   title: string;

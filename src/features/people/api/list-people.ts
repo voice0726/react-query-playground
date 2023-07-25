@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { Person } from "@/features/people/types";
 import { apiClient } from "@/lib/api-client";
-import { Pageable, Person } from "@/types";
+import { Pageable } from "@/types";
 
 const listPeople = async (page?: number) => {
   return await apiClient.get<Pageable<Person>>(`/api/people?page=${page||1}`).then((res) => res.data);

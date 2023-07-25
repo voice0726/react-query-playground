@@ -1,8 +1,8 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 
 import { userQueryKey } from "@/features/todos/api/query-key";
+import { Todo } from "@/features/todos/types";
 import { apiClient } from "@/lib/api-client";
-import { Todo } from "@/types";
 
 const getTodo = async (id: string) => {
   return await apiClient.get<Todo>(`/api/todos/${id}`).then((res) => res.data);
