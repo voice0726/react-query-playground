@@ -1,6 +1,7 @@
 import { rest } from "msw";
 
 import { API_URL } from "@/config/constants";
+import { CreateOrUpdateRequest } from "@/features/todos/types";
 import { db } from "@/testing/mocks";
 
 const getUsersHandler = rest.get(`${API_URL}/api/todos`, (_, res, ctx) => {
@@ -25,4 +26,21 @@ const getTodoHandler = rest.get(`${API_URL}/api/todos/:id`, (req, res, ctx) => {
   return res(ctx.status(200), ctx.json(todo));
 });
 
-export const todoHandlers = [getUsersHandler, getTodoHandler];
+const createTodoHandler = rest.post(
+  `${API_URL}/api/todos`,
+  async (req, res, ctx) => {
+    // todo: validate here
+    const body = await req.json<CreateOrUpdateRequest>();
+    if (!body)
+      return res(ctx.status(400), ctx.json({ message: "invalid body" }));
+
+    const created = db.todo.create({ ...body });
+    return res(ctx.status(201), ctx.json(created));
+  },
+);
+
+export const todoHandlers = [
+  getUsersHandler,
+  getTodoHandler,
+  createTodoHandler,
+];
