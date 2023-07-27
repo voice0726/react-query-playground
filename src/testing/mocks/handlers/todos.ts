@@ -39,8 +39,25 @@ const createTodoHandler = rest.post(
   },
 );
 
+const updateTodoHandler = rest.put(
+  `${API_URL}/api/todos/:id`,
+  async (req, res, ctx) => {
+    // todo: validate here
+    const { id } = req.params;
+    if (typeof id !== 'string')
+      return res(ctx.status(400), ctx.json({ message: 'invalid id' }));
+    const body = await req.json<CreateOrUpdateRequest>();
+    if (!body)
+      return res(ctx.status(400), ctx.json({ message: 'invalid body' }));
+
+    const updated = db.todo.update({ where: { id: { equals: id } }, data: { ...body } });
+    return res(ctx.status(200), ctx.json(updated));
+  }
+)
+
 export const todoHandlers = [
   getUsersHandler,
   getTodoHandler,
   createTodoHandler,
+  updateTodoHandler,
 ];
