@@ -21,7 +21,9 @@ const UserList = () => {
           </div>
         </div>
       ))}
+      <Link href={`/todos/create`}>Create New</Link>
     </div>
+
   );
 };
 export default UserList;
