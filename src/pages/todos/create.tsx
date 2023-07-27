@@ -1,11 +1,15 @@
+import { useRouter } from 'next/router';
+
 import { useCreateTodo } from '@/features/todos/api/create-todo';
 import CreateTodoForm from '@/features/todos/components/create-form';
 import { CreateOrUpdateRequest } from '@/features/todos/types';
 
 const CreateTodo = () => {
   const { mutate } = useCreateTodo();
-  const onSubmit = (data: CreateOrUpdateRequest) => {
+  const router = useRouter();
+  const onSubmit = async (data: CreateOrUpdateRequest) => {
     mutate(data);
+    await router.push('/todos');
   };
 
   return (
