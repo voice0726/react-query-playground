@@ -1,23 +1,16 @@
-import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
 import { useGetTodo } from '@/features/todos/api/get-todo';
 import { useUpdateTodo } from '@/features/todos/api/update-todo';
 import { CreateOrUpdateRequest } from '@/features/todos/types';
 
-type Props = {
-  id: string;
-};
 
-const UserDetail = ({ id }: Props) => {
-  const { data: todo, isLoading } = useGetTodo(id);
-  const { register, handleSubmit } = useForm<CreateOrUpdateRequest>({
-    defaultValues: {
-      title: todo?.title || '',
-      done: todo?.done || false,
-      description: todo?.description,
-    },
-  });
+const TodoDetail = () => {
+  const router = useRouter();
+  const id = router.query.id as string;
+  const { data: todo, isLoading } = useGetTodo(id, { enabled: router.isReady });
+  const { register, handleSubmit } = useForm<CreateOrUpdateRequest>({ values: todo });
   const { mutate } = useUpdateTodo();
 
   if (isLoading) {
@@ -27,7 +20,7 @@ const UserDetail = ({ id }: Props) => {
     return <div>Something went wrong!</div>;
   }
 
-  const onSubmit = (data: CreateOrUpdateRequest) => {
+  const onSubmit = async (data: CreateOrUpdateRequest) => {
     mutate({
       id: todo.id,
       title: data.title,
@@ -36,6 +29,7 @@ const UserDetail = ({ id }: Props) => {
       createdAt: todo.createdAt,
       updatedAt: todo.updatedAt,
     });
+    await router.push('/todos');
   };
 
   return (
@@ -80,16 +74,4 @@ const UserDetail = ({ id }: Props) => {
     </div>
   );
 };
-export default UserDetail;
-
-// eslint-disable-next-line @typescript-eslint/require-await
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const id = context.params?.id;
-  if (!id) {
-    return { notFound: true };
-  }
-  if (Array.isArray(id)) {
-    return { props: { id: id[0] } };
-  }
-  return { props: { id } };
-};
+export default TodoDetail;
