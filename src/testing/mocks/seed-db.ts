@@ -1,14 +1,21 @@
 import dayjs from 'dayjs';
 
+import { IS_BROWSER } from '@/config/constants';
+
 import { testData } from '../test-data';
 
 import { db } from './db';
+
 
 export const seedDb = (): void => {
   const userCount = db.todo.count();
   if (userCount > 0) {
     console.log('db already seeded');
     return;
+  }
+
+  if (!IS_BROWSER) {
+    return
   }
 
   let localDb = localStorage.getItem('testData');
