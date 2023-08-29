@@ -13,4 +13,4 @@ const initializeMocks = async () => {
   seedDb();
 };
 
-void (async () => initializeMocks())();
+void (async () => await initializeMocks())();
