@@ -2,14 +2,14 @@ import { useRouter } from 'next/router';
 
 import { useGetTodo } from '@/features/todos/api/get-todo';
 import { useUpdateTodo } from '@/features/todos/api/update-todo';
-import UpdateTodoForm from '@/features/todos/components/update-form';
+import { UpdateTodoForm } from '@/features/todos/components/update-form';
 import { CreateOrUpdateRequest } from '@/features/todos/types';
 
 const TodoDetail = () => {
   const router = useRouter();
   const id = router.query.id as string;
 
-  const { data: todo, isLoading } = useGetTodo(id, { enabled: router.isReady });
+  const { data: todo, isLoading } = useGetTodo(id ?? null, { enabled: !!id });
 
   const { mutate } = useUpdateTodo();
 

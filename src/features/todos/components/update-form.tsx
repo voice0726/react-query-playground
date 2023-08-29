@@ -9,7 +9,7 @@ type Props = {
   onSubmit: (data: CreateOrUpdateRequest) => void;
 }
 
-const UpdateTodoForm = ({ todo, onSubmit }: Props) => {
+export const UpdateTodoForm = ({ todo, onSubmit }: Props) => {
   const { register, handleSubmit, control } = useForm<CreateOrUpdateRequest>({ defaultValues: todo });
 
   return (
@@ -58,4 +58,3 @@ const UpdateTodoForm = ({ todo, onSubmit }: Props) => {
     </>
   );
 };
-export default UpdateTodoForm;

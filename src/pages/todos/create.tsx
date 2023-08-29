@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { useCreateTodo } from '@/features/todos/api/create-todo';
-import CreateTodoForm from '@/features/todos/components/create-form';
+import { CreateTodoForm } from '@/features/todos/components/create-form';
 import { CreateOrUpdateRequest } from '@/features/todos/types';
 
 const CreateTodo = () => {
