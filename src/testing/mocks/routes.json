@@ -1,0 +1,7 @@
+{
+  "/api/*": "/$1",
+  "/todos/all": "/todos",
+  "/todos/detail/*": "/todos/$1",
+  "/todos/done": "/todos?status=done",
+  "/todos/open": "/todos?status=open"
+}

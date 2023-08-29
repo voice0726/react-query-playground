@@ -6,11 +6,11 @@ import { queryClient } from '@/lib/react-query';
 
 type UpdateTodoBody = {
   title: string;
-  done: boolean;
+  status: Todo['status'];
   description?: string;
 };
 
-const updateTodo = async (id: string, body: UpdateTodoBody) => {
+const updateTodo = async (id: number, body: UpdateTodoBody) => {
   return await apiClient
     .put<Todo>(`/api/todos/${id}`, body)
     .then((res) => res.data);

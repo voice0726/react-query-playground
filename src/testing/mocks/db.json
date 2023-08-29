@@ -1,0 +1,42 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Test 1",
+      "status": "open",
+      "description": "this is a test 1",
+      "created_at": "2023-12-13T14:00:00",
+      "updated_at": "2023-12-13T14:00:00"
+    },
+    {
+      "id": 2,
+      "title": "Test 2",
+      "status": "done",
+      "description": "this is a test 2",
+      "created_at": "2023-12-13T14:00:00",
+      "updated_at": "2023-12-13T14:00:00"
+    },
+    {
+      "id": 3,
+      "title": "Test 3",
+      "status": "open",
+      "description": "this is a test 3",
+      "created_at": "2023-12-13T14:00:00",
+      "updated_at": "2023-12-13T14:00:00"
+    },
+    {
+      "id": 4,
+      "title": "Test 4",
+      "done": false,
+      "description": "this is a test 4 updated",
+      "created_at": "2023-12-13T14:00:00",
+      "updated_at": "2023-12-13T14:00:00"
+    },
+    {
+      "title": "test",
+      "done": false,
+      "description": "test",
+      "id": 5
+    }
+  ]
+}

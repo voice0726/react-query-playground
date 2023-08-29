@@ -1,7 +1,7 @@
 export type Todo = {
-  id: string;
+  id: number;
   title: string;
-  done: boolean;
+  status: 'done' | 'open';
   description?: string;
   createdAt: Date;
   updatedAt: Date;
